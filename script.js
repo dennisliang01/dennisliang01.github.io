@@ -1,5 +1,5 @@
 // Dennis Liang
-// Last edited 12/1/20
+// Last edited 1/9/21
 
 console.log("variables");
 const selectDeviceBtn = document.querySelector("#select_device");
@@ -7,6 +7,7 @@ const output = document.querySelector("#output");
 const cutDeviceBtn = document.querySelector("#cut_device");
 const output2 = document.querySelector("#output2");
 let gdxDevice;
+
 var firebaseConfig = {
   apiKey: "AIzaSyDREc2lp_WyDu7ntQ6M3UnxUzf_27Hf0bI",
   authDomain: "weatherdashboard-3bdc4.firebaseapp.com",
@@ -17,6 +18,7 @@ var firebaseConfig = {
   appId: "1:80992445262:web:42d193e45d4d8919e6741f",
   measurementId: "G-F9QVEGVE9Z"
 };
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 var sendData = null; 
