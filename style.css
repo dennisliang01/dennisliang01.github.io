@@ -1,0 +1,40 @@
+/* CSS files add styling rules to your content */
+
+body {
+  font-family: Montserrat, arial, sans-serif;
+  color: black;
+  background-color: #66bac0;
+  margin: 20px;
+}
+
+h1 {
+
+  font-style: normal;
+  color: #007377;
+  background-color:white;
+  font-weight: bold;
+  font-family: Mr Eaves Mod OT Bold,impact, fantasy, sans-serif;
+  font-size: 40px;
+  text-align: center;
+}
+
+button {
+background-color: #e6e6e4;
+text-align:center;
+color:black;
+padding:15px 32px;
+font-size: 16px;
+margin: 4px 2px;
+}
+
+span{
+  background-color: red;
+  font-family: Montserrat, arial, sans-serif;
+  font-weight: bold;
+  font-size: 70px;
+  color: white;
+  width: 5px;
+  border: 2px solid black;
+  padding: 5px 10px;
+  margin: 150 px;
+}
