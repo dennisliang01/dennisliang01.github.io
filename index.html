@@ -1,9 +1,29 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <title>Vernier Weather Dashboard</title>
 
-<body> 
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="style.css" />
 
+    <!--import gdx library -->
+    <script src="https://unpkg.com/@vernier/godirect/dist/godirect.min.umd.js"></script>
 
-<h1> Hello World </h1>
-</body>
+    <!-- import the webpage's javascript file -->
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <h1>Go Direct Weather Dashboard</h1>
+    <!--create a button that will be used to choose from a list of available Go Direct sensors-->
+    <button id="select_device">Select Go Direct Device</button>
+    <!--set formatting for output-->
+    <pre id="output"></pre>
+    <button id="cut_device">Disconnect Go Direct Device</button>
+    <pre id="output2"></pre>
+    <span id="data"> </span>
+  </body>
 </html>
