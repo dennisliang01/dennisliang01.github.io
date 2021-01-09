@@ -14,23 +14,36 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 // firebase.analytics();
 
-//var database = firebase.database();
 
-//var userId = firebase.auth().currentUser.uid;
- var dbRef =  firebase.database().ref();
- const weatherRef = dbRef.child("table"); 
- weatherRef.on("value", snapshot => {
-   snapshot.forEach(rowSnapshot => {
-    let key = rowSnapshot.key;
-    let value = rowSnapshot.val();
+setInterval(function(){
 
-    console.log(value);
-    console.log(key);
+  getWeatherData();
 
 
-   });
- });
+}, 5000);
 
-const output = document.querySelector("#output");
-const output2 = document.querySelector("#output2");
+
+
+function getWeatherData(){
+  
+  var dbRef =  firebase.database().ref();
+  const weatherRef = dbRef.child("table"); 
+  let dataLast = 0; 
+  weatherRef.on("value", snapshot => {
+    snapshot.forEach(rowSnapshot => {
+     let key = rowSnapshot.key;
+     let value = rowSnapshot.val();
+    dataLast = value.temp; 
+     console.log(value);
+     console.log(dataLast); 
+    });
+  });
+  document.querySelector("#output").innerHTML = dataLast;
+  document.querySelector("#time").innerHTML = "This is the tempature at :" + new Date();
+
+}
+
+getWeatherData();
+
+
 
