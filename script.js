@@ -28,7 +28,7 @@ function getWeatherData(){
   
   var dbRef =  firebase.database().ref();
   const weatherRef = dbRef.child("table"); 
-  let dataLast = 0; 
+  let dataLast = " temperature is loading..."; 
   weatherRef.on("value", snapshot => {
     snapshot.forEach(rowSnapshot => {
      let key = rowSnapshot.key;
