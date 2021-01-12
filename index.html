@@ -7,21 +7,28 @@
 
     <title>Vernier Weather Dashboard</title>
 
+    <!-- Firebase Source Code-->
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+
     <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./style.css" />
 
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <!--import gdx library -->
+    <script src="https://unpkg.com/@vernier/godirect/dist/godirect.min.umd.js"></script>
 
+    <!-- import the webpage's javascript file -->
+    <script src="./script.js" defer></script>
   </head>
+
   <body>
     <h1>Go Direct Weather Dashboard</h1>
     <!--create a button that will be used to choose from a list of available Go Direct sensors-->
-  
+    <button id="select_device">Select Go Direct Device</button>
     <!--set formatting for output-->
-    <p> <span id="time"></span> -- <span id="output"></span></p>
-  
-
-    <script src="script.js" defer></script>
+    <pre id="output"></pre>
+    <button id="cut_device">Disconnect Go Direct Device</button>
+    <pre id="output2"></pre>
+    <span id="data"> </span>
   </body>
+  
 </html>
