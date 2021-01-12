@@ -35,7 +35,7 @@ function getWeatherData(){
     });
   });
 
-  document.querySelector("#output").innerHTML = dataLast;
+  document.querySelector("#output").innerHTML = dataLast + `${sensor.unit}`;
   document.querySelector("#time").innerHTML = "This is the tempature at :" + new Date();
 }
 
