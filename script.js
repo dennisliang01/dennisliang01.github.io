@@ -1,5 +1,3 @@
-// Dennis Liang
-// Last edited 1/9/21
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 var firebaseConfig = {
@@ -15,23 +13,24 @@ var firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-// firebase.analytics();
 
+//Setting interval for fetching data from database
 setInterval(function(){
   getWeatherData();
-}, 5000);
+}, 5000); //Every 5 seconds refresh
 
+// Function for retreving the data
 function getWeatherData(){  
   var dbRef =  firebase.database().ref();
   const weatherRef = dbRef.child("table"); 
   let dataLast = " temperature is loading..."; 
-  weatherRef.on("value", snapshot => {
-    snapshot.forEach(rowSnapshot => {
-     let key = rowSnapshot.key;
-     let value = rowSnapshot.val();
+  weatherRef.on("value", snapshot => { //Taking value from table
+    snapshot.forEach(rowSnapshot => { //Taking value from row
+    let key = rowSnapshot.key;
+    let value = rowSnapshot.val();
     dataLast = value.temp; 
-     console.log(value);
-     console.log(dataLast); 
+    //console.log(value);
+    //console.log(dataLast); 
     });
   });
 
