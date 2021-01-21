@@ -1,13 +1,12 @@
-// Dennis Liang
-// Last edited 1/20/21
 
-console.log("variables");
+// Declaration of selectors
 const selectDeviceBtn = document.querySelector("#select_device");
 const output = document.querySelector("#output");
 const cutDeviceBtn = document.querySelector("#cut_device");
 const output2 = document.querySelector("#output2");
 let gdxDevice;
 
+// Firebase project configurations
 var firebaseConfig = {
   apiKey: "AIzaSyDREc2lp_WyDu7ntQ6M3UnxUzf_27Hf0bI",
   authDomain: "weatherdashboard-3bdc4.firebaseapp.com",
@@ -23,26 +22,30 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var sendData = null; 
 
-
+// Async function
 const selectDevice = async () => {
-  console.log("selectDevice function");
+  //console.log("selectDevice function");
   try {
     gdxDevice = await godirect.selectDevice();
     // print name and serial number
     var stat = `\n Connected to ` + gdxDevice.name;
     output.textContent = stat;
 
+    // Data upload async function
     sendData = setInterval(async function(){
-  
       var temp = parseFloat(document.getElementById("data").innerHTML);
+
+      // Check if temp is number
       if (isNaN(temp)){
         return; 
       }
-      console.log("Data was sent");
+      //console.log("Data was sent");
+
+      //Referencing database
       var dbRef =  firebase.database().ref();
-      const weatherRef = dbRef.child("table"); 
-      weatherRef.remove();
-      weatherRef.push({"temp":temp}); 
+      const weatherRef = dbRef.child("table"); //Reference table in database
+      weatherRef.remove(); //Remove previous data
+      weatherRef.push({"temp":temp}); //Upload new data
   }, 500);
   
 
@@ -58,9 +61,9 @@ const selectDevice = async () => {
         document.getElementById("data").innerHTML = `\n ${sensor.value.toFixed(
           2
         )} ${sensor.unit}`;
-        console.log(`\n ${sensor.value.toFixed(2)} ${sensor.unit}`);
+        //console.log(`\n ${sensor.value.toFixed(2)} ${sensor.unit}`);
         sensor.on("value-changed", sensor => {
-          console.log("sensor on");
+          //console.log("sensor on");
         });
       });
     });
@@ -70,12 +73,13 @@ const selectDevice = async () => {
   }
 };
 
+// Cut device async function
 const cutDevice = async () => {
-  console.log("cutDevice function");
+  //console.log("cutDevice function");
   try {
     gdxDevice.close();
     document.getElementById("data").innerHTML = "No Data";
-    clearInterval(sendData); 
+    clearInterval(sendData); //Clears timer in setInterval() method
     output.textContent = `\n Disconnected from ` + gdxDevice.name;
   } catch (err) {
     console.error(err);
