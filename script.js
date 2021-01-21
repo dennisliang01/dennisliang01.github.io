@@ -1,5 +1,5 @@
 // Dennis Liang
-// Last edited 1/9/21
+// Last edited 1/20/21
 
 console.log("variables");
 const selectDeviceBtn = document.querySelector("#select_device");
