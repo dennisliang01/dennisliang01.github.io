@@ -24,7 +24,6 @@ var sendData = null;
 
 // Async function
 const selectDevice = async () => {
-  //console.log("selectDevice function");
   try {
     gdxDevice = await godirect.selectDevice();
     // print name and serial number
@@ -39,7 +38,6 @@ const selectDevice = async () => {
       if (isNaN(temp)){
         return; 
       }
-      //console.log("Data was sent");
 
       //Referencing database
       var dbRef =  firebase.database().ref();
@@ -47,7 +45,6 @@ const selectDevice = async () => {
       weatherRef.remove(); //Remove previous data
       weatherRef.push({"temp":temp}); //Upload new data
   }, 500);
-  
 
     //turns on the Default sensor
     gdxDevice.enableDefaultSensors();
@@ -61,9 +58,7 @@ const selectDevice = async () => {
         document.getElementById("data").innerHTML = `\n ${sensor.value.toFixed(
           2
         )} ${sensor.unit}`;
-        //console.log(`\n ${sensor.value.toFixed(2)} ${sensor.unit}`);
         sensor.on("value-changed", sensor => {
-          //console.log("sensor on");
         });
       });
     });
@@ -75,7 +70,6 @@ const selectDevice = async () => {
 
 // Cut device async function
 const cutDevice = async () => {
-  //console.log("cutDevice function");
   try {
     gdxDevice.close();
     document.getElementById("data").innerHTML = "No Data";
