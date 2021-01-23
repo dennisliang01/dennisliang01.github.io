@@ -28,9 +28,7 @@ function getWeatherData(){
     snapshot.forEach(rowSnapshot => { //Taking value from row
     let key = rowSnapshot.key;
     let value = rowSnapshot.val();
-    dataLast = value.temp; 
-    //console.log(value);
-    //console.log(dataLast); 
+    dataLast = value.temp;  
     });
   });
 
